@@ -1,0 +1,13 @@
+<ul class="list-group">
+   <li class="list-group-item" *ngFor="let task of tasks; let i = index">
+      <div class="row">
+         <div class="col-md-12 pb-2">
+            {{ task.project }} - {{ task.description }}
+         </div>
+         
+         <div class="col-md-12 mb-2">
+            <app-assign-task [taskProject]="task.project" [taskDescription]="task.description" [taskIndex]="i"></app-assign-task>
+         </div>
+      </div>
+   </li>
+ </ul>

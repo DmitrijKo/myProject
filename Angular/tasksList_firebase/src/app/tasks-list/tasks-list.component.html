@@ -1,0 +1,18 @@
+<div class="row">
+  <div class="col-md-6">
+    <app-add-tasks-list (updateUzduotys)="getUzduotys()"></app-add-tasks-list>
+  </div>
+  <div class="col-md-6">
+    <div class="col-md-12">
+      <div class="card mt-3">
+        <div class="card-header"><b>Užduočių sąrašas:</b></div>
+        <div class="card-body">
+          <ul class="list-group mb-2">
+            <app-task-item *ngFor="let uzduotis of uzduotys" [taskItem]="uzduotis" (updateUzduotys)="getUzduotys()">
+            </app-task-item>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+<div class="card mt-3">
+  <div class="card-header" (click)="uzduotisVisible = !uzduotisVisible" style="cursor: pointer;">Sukurti naują užduotį</div>
+  <div class="card-body" *ngIf="uzduotisVisible">
+    <div class="mb-3">
+      <input type="text" class="form-control" placeholder="Pavadinimas" #project>
+    </div>
+    <div class="mb-3">
+      <textarea class="form-control" rows="3" placeholder="Aprašymas" #description></textarea>
+    </div>
+    <button class="btn btn-success" [disabled]="" (click)="addTask(project, description)">Pridėti</button>
+  </div>
+</div>

@@ -1,0 +1,83 @@
+<div class="row mt-5">
+  <div class="col-md-4">
+    <div class="card">
+      <div class="card-header"><b>KMI skaičiuoklė</b></div>
+      <div class="card-body">
+        <div class="mb-3">
+          <label class="form-label">Jūsų svoris (kg):</label>
+          <input type="number" class="form-control" [(ngModel)]="svoris" placeholder="0">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Jūsų ūgis (cm):</label>
+          <input type="number" class="form-control" [(ngModel)]="ugis" placeholder="0">
+        </div>
+        <button class="btn btn-success mb-3" (click)="skaiciuoti()">Skaičiuoti</button>
+        <div class="alert alert-secondary text-center p-2" *ngIf="kmi != undefined">
+          <b>Jūsų KMI: {{kmi.toFixed(1)}}</b>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-8">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">KMI reikšmė</th>
+          <th scope="col">&nbsp;</th>
+          <th scope="col">Ligų rizika</th>
+          <th scope="col">&nbsp;</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr [ngClass]="{'table-warning' : kmi < 18.5}">
+          <td>< 18.5</td>
+          <td>Mažas svoris</td>
+          <td>Yra rizika</td>
+          <td>
+            <div style="height: 20px; width:20px; background-color:yellow;border-radius: 50%;"></div>
+          </td>
+        </tr>
+        <tr [ngClass]="{'table-success' : kmi >= 18.5 && kmi <= 25}">
+          <td>18.5 - 25</td>
+          <td>Normalus svoris</td>
+          <td>Nėra</td>
+          <td>
+            <div style="height: 20px; width:20px; background-color:green;border-radius: 50%;"></div>
+          </td>
+        </tr>
+        <tr [ngClass]="{'table-warning' : kmi >= 25 && kmi <= 30}">
+          <td>25 - 30</td>
+          <td>Antsvoris</td>
+          <td>Nedidelė, stengtis, kad nedidėtų</td>
+          <td>
+            <div style="height: 20px; width:20px; background-color:yellowgreen;border-radius: 50%;"></div>
+          </td>
+        </tr>
+        <tr [ngClass]="{'table-danger' : kmi >= 30 && kmi <= 35}">
+          <td>30 - 35</td>
+          <td>Io nutukimas</td>
+          <td>Padidėjusi, būtina mažinti svorį</td>
+          <td>
+            <div style="height: 20px; width:20px; background-color:coral;border-radius: 50%;"></div>
+          </td>
+        </tr>
+        <tr [ngClass]="{'table-danger' : kmi >= 35 && kmi <= 40}">
+          <td>35 - 40</td>
+          <td>IIo nutukimas</td>
+          <td>Didelė, būtina mažinti svorį</td>
+          <td>
+            <div style="height: 20px; width:20px; background-color:red;border-radius: 50%;"></div>
+          </td>
+        </tr>
+        <tr [ngClass]="{'table-dark' : kmi > 40}">
+          <td>40 - 99</td>
+          <td>IIIo (liguistas) nutukimas</td>
+          <td>Labai didelė, būtina mažinti</td>
+          <td>
+            <div style="height: 20px; width:20px; background-color:black;border-radius: 50%;"></div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

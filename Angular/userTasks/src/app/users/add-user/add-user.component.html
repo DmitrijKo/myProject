@@ -1,0 +1,7 @@
+<div class="mb-3">
+  <input type="text" class="form-control" [(ngModel)]="userName" placeholder="Vardas" #name>
+</div>
+<div class="mb-3">
+  <input type="text" class="form-control" [(ngModel)]="userSurname" placeholder="Pavardė" #surname>
+</div>
+<button class="btn btn-success" [disabled]="userName == '' || userSurname == '' " (click)="addUser(name, surname)">Pridėti</button>

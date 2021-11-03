@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card mt-3">
+        <div class="card-header">Įvertink paslaugą:</div>
+        <div class="card-body">
+          <div class="mb-3">
+            <input type="text" name="name" class="form-control" placeholder="Jūsų vardas ir pavardė" #vardasPavarde>
+          </div>
+          <div class="form-floating">
+            <textarea class="form-control"style="height: 100px" #komentaras></textarea>
+            <label for="floatingTextarea2">Jūsų komentaras</label>
+          </div>
+          <div class="mb-3 mt-2">
+            <label class="form-label">Įvertink kokybę:</label>
+            <select class="form-select" #kokybe>
+              <option selected disabled="disabled" value="-1">Įvertinimas</option>
+              <option value="5">★★★★★</option>
+              <option value="4">★★★★</option>
+              <option value="3">★★★</option>
+              <option value="2">★★</option>
+              <option value="1">★</option>
+            </select>
+          </div>
+          <button class="btn btn-success" 
+          (click)="send(vardasPavarde.value, kokybe.value, komentaras.value)">Siųsti</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="card mt-3">
+        <div class="card-header">Įvertinimai:</div>
+        <div class="card-body">
+          <ul class="list-group" *ngIf="!loading">
+            <li class="list-group-item" *ngFor="let ivertinimas of ivertinimai">
+              <b>{{ ivertinimas.vardasPavarde }}: </b><i>{{ivertinimas.komentaras }}</i> - <i class="bi bi-star-fill" style="color: rgba(220, 227, 15, 0.8)" *ngFor="let zvaigzde of [].constructor(parseInt(ivertinimas.kokybe))"></i>
+            </li>
+          </ul>
+          <div class="alert alert-info" *ngIf="loading && !error">Kraunasi...</div>
+          <div class="alert alert-danger mt-3" *ngIf="error">
+            <h3>
+              Įvyko klaida!
+            </h3>
+            <p>{{ error }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

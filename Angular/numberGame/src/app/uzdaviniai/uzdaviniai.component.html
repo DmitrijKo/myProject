@@ -1,0 +1,27 @@
+<div class="col-md-12">
+  <div class="card mt-3" [hidden]="visibilityKlausimai">
+    <div class="card-header"><b>Klausimas Nr.{{ klausimoNr + 1 }}</b></div>
+    <div class="card-body">
+      <div><i>{{ klausimai[klausimoNr].klausimas }}</i>
+        <div class="float-end">Liko <b style="color: rgba(240, 36, 61, 0.8);">{{laikas}}</b> sec. <b>|</b> Atsakyta
+          {{klausimoNr}} iš {{visoKlausimu}}</div>
+        <hr>
+        <div *ngIf="laikas != 0">
+          <input type="number" class="form-control mb-3" placeholder="Atsakymas:" [(ngModel)]="atsakymas">
+          <div class="d-grid col-2 mx-auto">
+            <button class="btn btn-success" (click)="speti()">Atsakyti</button>
+          </div>
+        </div>
+        <div class="alert alert-warning text-center" *ngIf="laikas == 0">
+          <b>Laikas baigėsi!</b>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card mt-3" [hidden]="visibilityRezultatas">
+    <div class="card-header"><b>Rezultatas:</b></div>
+    <div class="card-body">
+      <div>Teisingai atspėtą {{ teisingiAtsakymai }} iš {{ visoKlausimu }}</div>
+    </div>
+  </div>
+</div>

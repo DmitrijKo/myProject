@@ -1,0 +1,35 @@
+<div class="col-md-6 mx-auto">
+  <div class="card mt-5">
+    <div class="card-header"><i>Pildyti receptų knygą:</i></div>
+    <div class="card-body">
+      <form [formGroup]="reactiveForm" (ngSubmit)="onPostRecipe(forma)" #forma="ngForm">
+
+        <!--Pavadinimas-->
+        <div class="mb-3">
+          <input type="text" class="form-control" placeholder="Recepto pavadinimas" name="name" formControlName="name">
+          <span class="help-block" *ngIf="reactiveForm.get('name').touched && !reactiveForm.get('name').valid">Laukas privalomas</span>
+        </div>
+
+        <!--Ingredientas-->
+        <div formArrayName="ingredients">
+        <div class="mb-3" *ngFor="let ingredientControl of getIngredientsForm().controls; let i = index">
+          <label class="form-label">Ingredientas:</label>
+          <input type="text" class="form-control" placeholder="Pavadinimas" [formControlName]="i">
+         </div>
+      </div>
+         <button class="btn btn-primary" type="button" (click)="addInput()">Pridėti ingredientą</button>
+
+        <!--Aprašymas-->
+        <div class="form-floating mt-3">
+          <textarea class="form-control" style="height: 100px" name="description" formControlName="description"></textarea>
+          <label for="floatingTextarea2">Recepto aprašymas</label>
+          <span class="help-block" *ngIf="reactiveForm.get('description').touched && !reactiveForm.get('description').valid">Laukas privalomas</span>
+        </div>
+
+        <!--Button-->
+        <button class="btn btn-success mt-3" type="submit" [disabled]="!reactiveForm.valid">Išsaugoti</button>
+        <button [routerLink]="['/']" class="btn btn-secondary mt-3 float-end" type="button">Atgal</button>
+      </form>
+    </div>
+  </div>
+</div>

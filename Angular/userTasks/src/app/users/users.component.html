@@ -1,0 +1,13 @@
+<div class="card mt-2" *ngFor="let user of users">
+  <div class="card-header">{{ user.name }} {{ user.surname }}</div>
+  <div class="card-body">
+    <app-user-tasks [tasks]="user.tasks"></app-user-tasks>
+  </div>
+</div>
+
+<div class="card mt-3">
+  <div class="card-header" (click)="userVisible = !userVisible" style="cursor: pointer;">Pridėti naują darbuotoją</div>
+  <div class="card-body" *ngIf="userVisible">
+    <app-add-user></app-add-user>
+  </div>
+</div>

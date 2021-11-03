@@ -1,0 +1,22 @@
+<div class="col-md-12">
+   <div class="card mt-3">
+      <div class="card-header"><b>Pridėti užduotį:</b></div>
+      <div class="card-body">
+         <div class="mb-3">
+            <input type="email" class="form-control" placeholder="Užduoties pavadinimas" [(ngModel)]="pavadinimas">
+          </div>
+          <div class="mb-3">
+            <textarea class="form-control" rows="3" placeholder="Užduoties aprašymas" [(ngModel)]="aprasymas"></textarea>
+          </div>
+          <div class="mb-3">
+             <label class="form-label">Pasirinkite užduoties statusą:</label>
+            <select class="form-select" [(ngModel)]="statusas">
+               <option value="Laukiama">Laukiama</option>
+               <option value="Vykdoma">Vykdoma</option>
+               <option value="Atlikta">Atlikta</option>
+             </select>
+          </div>
+         <button class="btn btn-success" (click)="postUzduotis()" [disabled]="pavadinimas == '' || aprasymas == '' || statusas == '' ">Pridėti užduotį</button>
+      </div>
+   </div>
+</div>

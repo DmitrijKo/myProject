@@ -1,0 +1,12 @@
+<div class="col-md-6 mx-auto">
+  <div class="card mt-5">
+     <div class="card-header">Labas: <i>{{ user.email }}</i></div>
+    <div class="card-body">
+      <div class="list-group">
+         <a class="list-group-item list-group-item-action" [routerLink]="['recipes-read']">Skaityti receptų knygą</a>
+         <a class="list-group-item list-group-item-action" [routerLink]="['recipes-write']">Pildyti receptų knygą</a>
+       </div>
+      <button type="button" class="btn btn-info mt-3 float-end" (click)="onLogout()">Atsijungti</button>
+    </div>
+  </div>
+</div>

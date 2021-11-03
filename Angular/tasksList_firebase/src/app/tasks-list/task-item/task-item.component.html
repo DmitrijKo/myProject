@@ -1,0 +1,17 @@
+<li class="list-group-item" [ngStyle]="{'background-color':getBackground(taskItem.statusas)}">
+  <div class="mb-2">
+     <div class="mt-2 text-center"><ins><i>Statusas:</i><b> {{taskItem.statusas}}</b></ins></div>
+    <div class="mt-2"><i>{{taskItem.pavadinimas}}</i> - {{taskItem.aprasymas}}</div>
+    <hr>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Pasirinkite užduoties statusą:</label>
+    <select class="form-select" [(ngModel)]="statusas">
+      <option value="Laukiama">Laukiama</option>
+      <option value="Vykdoma">Vykdoma</option>
+      <option value="Atlikta">Atlikta</option>
+    </select>
+  </div>
+  <button class="btn btn-danger float-end mt-2 mb-3" (click)="deleteUzduotis(taskItem.id)">Ištrinti</button>
+  <button class="btn btn-warning mt-2 mb-3" (click)="changeStatus(taskItem.id)">Pakeisti statusą</button>
+</li>
